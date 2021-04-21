@@ -1,0 +1,133 @@
+/* FONTS */
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/GothamBold.ttf');
+    font-weight: 600;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/GothamMedium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/GothamLight.ttf');
+     font-weight: 400;
+     font-style:normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/GothamBook.ttf');
+     font-weight: 300;
+     font-style:normal;
+}
+
+.TextBold {
+    font-weight: 600;
+}
+.TextNormal {
+    font-weight: 500;
+}
+.TextLight {
+    font-weight: 300;
+}
+.TextBook {
+    font-weight: 200;
+}
+
+
+/* ANIMĀCIJAS "KEYFRAME" PRIEKŠ LAPAS AUGŠPUSES TEKSTA */
+
+@keyframes FloatTextTop {
+    
+}
+
+/* CLASS CSS */
+
+
+html,
+body {
+    overflow: hidden;
+    box-sizing: border-box;
+    background-repeat:no-repeat;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(#c1efff,#ffb7db);
+}
+
+.TextShadowBig {
+    text-shadow: 2px 2px 3px #c2c2c2
+}
+
+.TextShadowSmall {
+    text-shadow: 1px 1px 2px #b5b5b5
+}
+
+.center {
+    justify-content: center;
+    text-align: center;
+}
+
+.NoOutline {
+    outline: none;
+    border:none;
+    color: #ffffff;
+}
+
+.button {
+    width: 30vmax;
+    border-radius: 5vmax;
+    border-bottom: 50%;
+    position: relative;
+    top: 0px;
+    padding: 6px;
+    filter: brightness(1);
+    filter: sepia(0);
+    text-shadow: 1px 1px 4px #d1cfcf;
+    box-shadow: 1px 1px 8px #d0d0d0;
+    background-image: linear-gradient(#fcccff, #c1ebff);
+    transition: 0.2s;
+}
+
+.button:hover {
+    position: relative;
+    top: -4px;
+    filter: brightness(1.02);
+    filter: sepia(0.05);
+    box-shadow: 0px 2px 9px #d0d0d0;
+    border-bottom: 20px;
+    transition: 0.2s;
+}
+
+.button:active {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 10px #bbbbbb;
+}
+
+.WaveStyle {
+    position: fixed;
+
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%,50%);
+
+    stroke: none;
+
+    fill: rgb(255, 247, 247);
+    
+    filter: drop-shadow(0px 0px 15px #d1d1d1);
+}
+
+
+/* SPECIFIC ELEMENT ID CSS */
+
+#CreateNewTask {
+    max-width: 300px;
+    font-size: 115%;
+}
