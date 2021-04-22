@@ -42,11 +42,8 @@
 }
 
 
-/* ANIMĀCIJAS "KEYFRAME" PRIEKŠ LAPAS AUGŠPUSES TEKSTA */
+/* ANIMĀCIJU KEYFRAMES */
 
-@keyframes FloatTextTop {
-    
-}
 
 /* CLASS CSS */
 
@@ -112,22 +109,72 @@ body {
 
 .WaveStyle {
     position: fixed;
-
     left: 50%;
     bottom: 0px;
     transform: translate(-50%,50%);
-
     stroke: none;
-
-    fill: rgb(255, 247, 247);
-    
+    fill: #fff7f7;
     filter: drop-shadow(0px 0px 15px #d1d1d1);
 }
-
 
 /* SPECIFIC ELEMENT ID CSS */
 
 #CreateNewTask {
     max-width: 300px;
     font-size: 115%;
+}
+
+#PopUpBackground {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #00000021;
+}
+
+#PopUpFrame {
+    display: none;
+    position: absolute;
+    background-color: #fff7f7;;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 425px;
+    height: 500px;
+    transition: 0.1s;
+    box-shadow: 1px 1px 8px #d0d0d0;
+    background-image: linear-gradient(#fddfff, #d5f2ff);
+
+    overflow: hidden;  /* this is purely for the wave thingy on the popup */
+}
+
+#PopUpFrame:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.1s;
+    
+}
+
+#PopUpCloseButton,
+#PopUpClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@keyframes FadeIn {
+    0% {opacity: 0;};
+    100% {opacity: 1;};
+}
+
+@keyframes FadeOut {
+    100% {opacity: 1;};
+    0% {opacity: 0;};
 }

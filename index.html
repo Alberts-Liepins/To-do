@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "javascript.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -22,5 +23,24 @@
     <svg class="WavePosition WaveStyle" viewBox="0 0 500 260">
         <path d="M0,110 C245,130 270,85 500,110 L500,250 L0,250 X"/>
     </svg>
+    <div>
+        <div id="PopUpFrame">
+            <p class="center">This is a popup. Enter information relating your task here.</p>
+            <span class="center">
+                <input id="PopUpCloseButton" type="button" value="Close" class="PopUpClose center">
+            </span>
+
+            <form class="center"> 
+                <form action="text" id="TaskName" class="FormTextBox"></form>
+                <form action="text" id="TaskDescription" class="FormTextBox"></form>
+                <form action="date" id="TaskDate" class="FormDateBox"></form>
+                <form action="submit" id="SubmitTask" class="FormSubmit"></form>
+            </form>
+            <svg class="WavePosition WaveStyle" viewBox="0 0 500 260">
+                <path d="M0,110 C245,130 270,85 500,110 L500,250 L0,250 X"/>
+            </svg>
+        </div>
+        <div id="PopUpBackground"></div>
+    </div>
 </body>
 </html>
