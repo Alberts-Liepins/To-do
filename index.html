@@ -12,11 +12,11 @@
     <div class="">
         <div class="PageMainFrame">
             <div id="Head" class="center">
-                <p class="TextBook TextShadowSmall" style="color: #ffffff; font-size: medium;">Add, remove and edit any tasks you need to complete.</p>
-                <h1 class="TextNormal TextShadowBig" style="color: #ffffff; font-size:xx-large">Hello, world!</h1>
+                <p class="TextBook TextShadowSmall" style="color: #ffffff; font-size: medium;">Pievienojiet, saglabājiet un noņemiet uzdevumus. Sakārtojiet dienas darbus.</p>
+                <h1 class="TextNormal TextShadowBig" style="color: #ffffff; font-size:xx-large">Uzdevumu saraksts</h1>
             </div>
             <div class="center">
-                <input id="CreateNewTask" class="button TextNormal NoOutline" type="button" value="Create a new task!">
+                <input id="CreateNewTask" class="button TextNormal NoOutline" type="button" value="Pierakstīt uzdevumu">
             </div>
         </div>
     </div>
@@ -25,17 +25,24 @@
     </svg>
     <div>
         <div id="PopUpFrame">
-            <p class="center">This is a popup. Enter information relating your task here.</p>
-            <span class="center NoOutline">
-                <input id="PopUpCloseButton" class="TextNormal NoOutline" type="button" value="Close" >
+            <span>
+                <h2 id="PopUpHeaderText" class="TextShadowBig">Jauns uzdevums!</h2 >
+                <input id="PopUpCloseButton" class="TextNormal NoOutline" type="button" value="Aizvērt">
             </span>
+            <div id="PopUpFormFrame">
+                <form id="PopUpForm">
+                    <label class="TextNormal TextShadowBig" for="TaskName" maxlength="10">Dodiet uzdevumam nosaukumu!</label><br>
+                    <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!"><br>
 
-            <form class="center"> 
-                <form action="text" id="TaskName" class="FormTextBox"></form>
-                <form action="text" id="TaskDescription" class="FormTextBox"></form>
-                <form action="date" id="TaskDate" class="FormDateBox"></form>
-                <form action="submit" id="SubmitTask" class="FormSubmit"></form>
-            </form>
+                    <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="100">Rakstiet īsu aprakstu par uzdevumu!</label><br>
+                    <textarea class="TextInput" type="textarea" id="TaskDescription" name="TaskDescription" placeholder="Aprakstiet jūsu uzdevumu!" wrap="hard" maxlength="204"></textarea><br>
+                    
+                    <label class="TextNormal TextShadowBig" for="TaskDueDate">Līdz kuram datumam jāpabeidz uzdevums?</label><br>
+                    <input type="date" id="TaskDueDate" name="TaskDueDate" min="2021-04-23" max="2500-04-30"><br>
+                </form>
+            </div>
+            <button id="SubmitButton" class="TextNormal NoOutline center TextShadowBig" type="button">Iesniegt</button>
+
             <svg id="SmallWave" viewBox="0 0 500 260">
                 <path d = "M0,90 C245,60 290,118 500,80 L500,250 L0,250 X"/>
                 <!--

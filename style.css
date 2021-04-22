@@ -119,6 +119,10 @@ body {
     filter: drop-shadow(0px 0px 15px #d1d1d1);
 }
 
+.TextInput {
+    color: #ffffff;
+}
+
 /* SPECIFIC ELEMENT ID CSS */
 
 #CreateNewTask {
@@ -147,9 +151,10 @@ body {
     transform: translate(-50%, -50%);
     width: 425px;
     height: 500px;
-    transition: 0.1s;
+    border-radius: 17px;
     box-shadow: 1px 1px 8px #d0d0d0;
     background-image: linear-gradient(#fddfff, #d5f2ff);
+    transition: 0.1s;
     overflow: hidden;  /* šitais ir tam vilnim apakšā lai neredz to ārpus popup loga. */
 }
 
@@ -165,12 +170,13 @@ body {
 }
 
 #PopUpCloseButton {
-    width: 60px;
+    position:fixed;
+    top: 0px;
+    width: 75px;
     border-radius: 5vmax;
-    border-bottom: 50%;
-    position: relative;
-    padding: 6px;
-    margin: 10px;
+    margin: 13px;
+    right: 1px;
+    padding: 7px;
     filter: brightness(1);
     filter: sepia(0);
     text-shadow: 1px 1px 4px #d1cfcf;
@@ -180,12 +186,10 @@ body {
 }
 
 #PopUpCloseButton:hover {
-    position: relative;
-    top: -1px;
+    top: -2px;
     filter: brightness(1.02);
     filter: sepia(0.05);
     box-shadow: 0px 2px 9px #d0d0d0;
-    border-bottom: 20px;
     transition: 0.2s;
     cursor: pointer;
 }
@@ -193,4 +197,105 @@ body {
 #PopUpCloseButton:active {
     transform: scale(1.2);
     box-shadow: 0px 3px 10px #bbbbbb;
+}
+
+#PopUpHeaderText {
+    color: #ffffff;
+    font-size: 26px;
+    margin: 15px;
+}
+
+#PopUpFormFrame {
+    position: absolute;
+    display: block;
+    width: 400px;
+    margin-top: 57px;
+    margin-left: 15px;
+}
+
+#PopUpFormFrame label  {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 530;
+}
+
+#PopUpFormFrame textarea,
+#PopUpFormFrame input {
+    position: relative;
+    outline: none;
+    border: none;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border-bottom: 3.5px solid #fee4ff;
+    border-radius: 13px;
+    box-shadow: 0px 2px 7px #cacaca ;
+    color: #edcbf0d9;
+    font-size: 17px;
+    padding: 0px 12px 0px 12px;
+    resize: none;
+}
+
+#SubmitButton {
+    z-index: 3;
+    width: 50%;
+    height: 35px;
+    margin: 0;
+    position:fixed;
+    top: 80%;
+    left: 25%;
+    border-radius: 5vmax;
+    filter: brightness(1);
+    filter: sepia(0);
+    text-shadow: 1px 1px 4px #d1cfcf;
+    box-shadow: 1px 1px 8px #d0d0d0;
+    background-image: linear-gradient(#fcccff, #c1ebff);
+    font-size: 17px;
+
+    transition: 0.2s;
+}
+
+#SubmitButton:hover {
+    position: absolute;
+    top: 79%;
+    filter: brightness(1.02);
+    filter: sepia(0.05);
+    box-shadow: 0px 2px 9px #d0d0d0;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#SubmitButton:active {
+    position: absolute;
+    top: 78.2%;
+    transform: scale(1.2);
+    box-shadow: 0px 3px 10px #bbbbbb;
+}
+
+#TaskName {
+    width: 250px;
+    height: 23px;
+}
+
+#TaskName {
+    width: 250px;
+}
+
+#TaskDescription {
+    width: 325px;
+    height: 125px;
+    
+}
+
+::placeholder {
+    color: #4f385243;
+}
+
+/* TAS SCROLLBAR LIETIŅAS MODIFIKĀCIJA */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
 }
