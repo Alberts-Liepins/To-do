@@ -1,46 +1,61 @@
 document.addEventListener('DOMContentLoaded', function(){ 
-    const ANIMATION_STEPS = 40 /* pilnīgi patvaļīgi izvēlēts skaitlis. Nosaka cik soļi ir animācijās. */
+    var animationSteps = 40  // pilnīgi patvaļīgi izvēlēts skaitlis. Nosaka cik soļi ir animācijās.
+
+    var fadeInTime_Background = 0.2
+    var fadeOutTime_Background = 0.2
+
+    var fadeInTime_PopUp = 0.05
+    var fadeOutTime_PopUp = 0.05
+
+    var blurRadius = 2.5
 
     function FadeIn(element, fadeTime, blurBoolean, radius) {
         element.style.display = "block";
+
         if (element.style.opacity >= 0) {
-            element.style.opacity = 0
+            element.style.opacity = "0"
         }
         if (blurBoolean) {
             var blur = 0
         }
+        
+        var opacityIterationStep = 1 / animationSteps
+
+        console.log(fadeTime / animationSteps)
+
         var start = setInterval(() => {
-            element.style.opacity = parseFloat(element.style.opacity) + 0.025
+            element.style.opacity = parseFloat(element.style.opacity) + opacityIterationStep
             if (blurBoolean) {
-                blur += radius / ANIMATION_STEPS
+                blur += radius / animationSteps
                 element.style.backdropFilter = `blur(${blur}px)`;
-                console.log(blur)
             }
             if (element.style.opacity >= 1) {
                 clearInterval(start);
             }
-        }, fadeTime / ANIMATION_STEPS);
+        }, 1000 * (fadeTime / animationSteps));    // jareizina ar 1000 jo ievada sekundes bet setInterval() laiku pieņem milisekundēs
     }
 
     function FadeOut(element, fadeTime, blurBoolean, radius) {
         if (element.style.opacity <= 1) {
-            element.style.opacity = 1
+            element.style.opacity = "1"
         }
         if (blurBoolean) {
             var blur = radius
         }
+
+        var opacityIterationStep = 1 / animationSteps
+
         var start = setInterval(() => {
-            element.style.opacity = parseFloat(element.style.opacity) - 0.025
+            element.style.opacity = parseFloat(element.style.opacity) - opacityIterationStep
             if (blurBoolean) {
-                blur -= radius / ANIMATION_STEPS
+                blur -= radius / animationSteps
                 element.style.backdropFilter = `blur(${blur}px)`;
-                console.log(blur)
             }
             if (element.style.opacity <= 0) {
                 clearInterval(start);
                 element.style.display = "none";
             }
-        }, fadeTime / ANIMATION_STEPS);
+        }, 1000 * (fadeTime / animationSteps));    // jareizina ar 1000 jo ievada sekundes bet setInterval() laiku pieņem milisekundēs
     }
 
     var PopUpBackground = document.getElementById("PopUpBackground")
@@ -49,17 +64,16 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById("CreateNewTask").addEventListener("click", function(event){
         event.preventDefault()
         console.log("creating new task")
-        FadeIn(PopUpBackground, 0.5, true, 10)
-        FadeIn(PopUpFrame, 0.1)
+        FadeIn(PopUpBackground, fadeInTime_Background, true, blurRadius)
+        FadeIn(PopUpFrame, fadeInTime_PopUp)
         PopUpFrame.style.display = "flex"
     });
 
     document.getElementById("PopUpCloseButton").addEventListener("click", function(event){
         event.preventDefault()
         console.log("clicked close button")
-        FadeOut(PopUpBackground, 0.25, true, 10)
-        FadeOut(PopUpFrame, 0.1)
-        PopUpFrame.style.display = "none"
+        FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
+        FadeOut(PopUpFrame, fadeOutTime_PopUp)
     });
 
     window.addEventListener("click", function(event){
@@ -68,9 +82,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
         if (event.target == PopUpBackground && PopUpBackground.style.display == "block"){
             console.log("clicked out of window")
-            FadeOut(PopUpBackground, 0.25, true, true, 10)
-            FadeOut(PopUpFrame, 0.1, false)
-            PopUpFrame.style.display = "none"
+            FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
+            FadeOut(PopUpFrame, fadeOutTime_PopUp)
         }
     });
 })
