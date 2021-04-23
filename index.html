@@ -8,61 +8,62 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body class="BackgroundGradient ">
-    <div class="">
-        <div class="PageMainFrame">
-            <div id="Head" class="center">
-                <p class="TextBook TextShadowSmall" style="color: #ffffff; font-size: medium;">Pievienojiet, saglabājiet un noņemiet uzdevumus. Sakārtojiet dienas darbus.</p>
-                <h1 class="TextNormal TextShadowBig" style="color: #ffffff; font-size:xx-large">Uzdevumu saraksts</h1>
-            </div>
-            <div class="center">
-                <input id="CreateNewTask" class="button TextNormal NoOutline" type="button" value="Pierakstīt uzdevumu">
-            </div>
+<body>
+    <div>
+        <div id="Head" class="center">
+            <p class="TextBook TextShadowSmall" style="color: #ffffff; font-size: medium;">Pievienojiet, saglabājiet un noņemiet uzdevumus. Sakārtojiet dienas darbus.</p>
+            <h1 class="TextNormal TextShadowBig" style="color: #ffffff; font-size:xx-large">Uzdevumu saraksts</h1>
+        </div>
+        <div class="center">
+            <input id="CreateNewTask" class="button TextNormal NoOutline" type="button" value="Pierakstīt uzdevumu">
         </div>
     </div>
-    <svg class="WaveStyle" viewBox="0 0 500 260">
+    <svg class="WaveStyle" viewBox="0 0 500 260" style="z-index: 2">
         <path d="M0,110 C245,130 270,85 500,110 L500,250 L0,250 X"/>
     </svg>
-    <div>
-        <div id="PopUpFrame">
-            <span>
-                <h2 id="PopUpHeaderText" class="TextShadowBig">Jauns uzdevums!</h2 >
-                <input id="PopUpCloseButton" class="TextNormal NoOutline" type="button" value="Aizvērt">
-            </span>
-            <div id="PopUpFormFrame">
-                <form id="PopUpForm">
-                    <label class="TextNormal TextShadowBig" for="TaskName" maxlength="10">Dodiet uzdevumam nosaukumu!</label><br>
-                    <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!"><br>
+    <div id="PopUpFrame">
+        <span>
+            <h2 id="PopUpHeaderText" class="TextShadowBig">Jauns uzdevums!</h2 >
+            <input id="PopUpCloseButton" class="TextNormal NoOutline" type="button" value="Aizvērt">
+        </span>
+        <div id="PopUpFormFrame">
+            <form id="PopUpForm">
+                <label class="TextNormal TextShadowBig" for="TaskName" maxlength="10">Dodiet uzdevumam nosaukumu!</label><br>
+                <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!" spellcheck="false"><br>
 
-                    <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="100">Rakstiet īsu aprakstu par uzdevumu!</label><br>
-                    <textarea class="TextInput" type="textarea" id="TaskDescription" name="TaskDescription" placeholder="Aprakstiet jūsu uzdevumu!" wrap="hard" maxlength="204"></textarea><br>
-                    
-                    <label class="TextNormal TextShadowBig" for="TaskDueDate">Līdz kuram datumam jāpabeidz uzdevums?</label><br>
-                    <input type="date" id="TaskDueDate" name="TaskDueDate" min="2021-04-23" max="2500-04-30"><br>
-                </form>
-            </div>
-            <button id="SubmitButton" class="TextNormal NoOutline center TextShadowBig" type="button">Iesniegt</button>
-
-            <svg id="SmallWave" viewBox="0 0 500 260">
-                <path d = "M0,90 C245,60 290,118 500,80 L500,250 L0,250 X"/>
-                <!--
-                    Man iepriekš SVG koordinātu sistēma bija nesaprotama, bet taisot šo majaslapu es palasiju par SVG koordinātēm un +- sapratu kā tās strādā.
-                    Sapratu pietiekoši lai uzzimētu parastu vilni.
-
-                    M<x>,<y> varētu aprakstīt kā koordināti kurā novieto zīmuli lai sāktu zīmēt. No šī punkta sāk zīmēt.
-                    
-                    C<x>,<y> <x>,<y> <x>,<y> šis ir bezier līkne. Līkne sākas ar M<x>,<y> tad lokas uz pirmo bezier līknes koordināti, 
-                    tad uz otro un tad uz trešo koordināti gludā veidā un sanāk vilnītis.
-
-                    L<x>,<y> rada taisnu līniju no koordinātes uz nākošo koordināti.
-                    
-                    Šādi man sanāca ļoti vienkārš vilnītis. Es nezinu kā panākt lai tas viļņojas. To es meiģināšu nedaudz vēlāk kad man būs pabeigts viss pārējais.
-
-                    -- Alberts Liepiņš 22:06 22.04.2021
-                -->
-            </svg>
+                <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="100">Rakstiet īsu aprakstu par uzdevumu!</label><br>
+                <textarea class="TextInput" type="textarea" id="TaskDescription" name="TaskDescription" placeholder="Aprakstiet jūsu uzdevumu!" wrap="hard" maxlength="204" spellcheck="false"></textarea><br>
+                
+                <label class="TextNormal TextShadowBig" for="TaskDueDate">Līdz kuram datumam jāpabeidz uzdevums?</label><br>
+                <input type="date" id="TaskDueDate" name="TaskDueDate" min="2021-04-23" max="2500-04-30" spellcheck="false"><br>
+            </form>
         </div>
-        <div id="PopUpBackground"></div>
+        <input id="SubmitButton" class="TextNormal NoOutline center TextShadowBig" type="button" value="Iesniegt">
+
+        <svg id="SmallWave" viewBox="0 0 500 260">
+            <path d = "M0,90 C245,60 290,118 500,80 L500,250 L0,250 X"/>
+            <!--
+                Man iepriekš SVG koordinātu sistēma bija nesaprotama, bet taisot šo majaslapu es palasiju par SVG koordinātēm un +- sapratu kā tās strādā.
+                Sapratu pietiekoši lai uzzimētu parastu vilni.
+
+                M<x>,<y> varētu aprakstīt kā koordināti kurā novieto zīmuli lai sāktu zīmēt. No šī punkta sāk zīmēt.
+                
+                C<x>,<y> <x>,<y> <x>,<y> šis ir bezier līkne. Līkne sākas ar M<x>,<y> tad lokas uz pirmo bezier līknes koordināti, 
+                tad uz otro un tad uz trešo koordināti gludā veidā un sanāk vilnītis.
+
+                L<x>,<y> rada taisnu līniju no koordinātes uz nākošo koordināti.
+                
+                Šādi man sanāca ļoti vienkārš vilnītis. Es nezinu kā panākt lai tas viļņojas. To es meiģināšu nedaudz vēlāk kad man būs pabeigts viss pārējais.
+
+                -- Alberts Liepiņš 22:06 22.04.2021
+            -->
+        </svg>
+    </div>
+    <div id="PopUpBackground"></div>
+    <div id="TasksFrame" class="NoOutline">
+        <div id="TaskPreset">
+            hello
+        </div>
     </div>
 </body>
 </html>

@@ -58,10 +58,18 @@ document.addEventListener('DOMContentLoaded', function(){
         }, 1000 * (fadeTime / animationSteps));    // jareizina ar 1000 jo ievada sekundes bet setInterval() laiku pieņem milisekundēs
     }
 
+    function ApplyShakeAnimation(element, animationKeyFramesName, time) {
+        element.style.display = "absolute"
+        element.style.transition = `${time}s`
+    
+        element.style.animation = `${animationKeyFramesName} ${time}s`
+        setTimeout(() => {element.style.animation = ""}, 1000 * time)  // Noņemt animāciju pēctam kad tā ir pabeigta lai nākamreiz arī strādā
+    }
+
     var PopUpBackground = document.getElementById("PopUpBackground")
     var PopUpFrame = document.getElementById("PopUpFrame")
 
-    document.getElementById("CreateNewTask").addEventListener("click", function(event){
+    document.getElementById("CreateNewTask").addEventListener("click", (event) => {
         event.preventDefault()
         console.log("creating new task")
         FadeIn(PopUpBackground, fadeInTime_Background, true, blurRadius)
@@ -69,14 +77,19 @@ document.addEventListener('DOMContentLoaded', function(){
         PopUpFrame.style.display = "flex"
     });
 
-    document.getElementById("PopUpCloseButton").addEventListener("click", function(event){
+    document.getElementById("PopUpCloseButton").addEventListener("click", (event) => {
         event.preventDefault()
         console.log("clicked close button")
         FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
         FadeOut(PopUpFrame, fadeOutTime_PopUp)
+        setTimeout(() => {
+            TaskName.value = ""
+            TaskDescription.value = ""
+            DueDate.value = ""
+        }, 3000 * fadeOutTime_PopUp);
     });
 
-    window.addEventListener("click", function(event){
+    window.addEventListener("click", (event) => {
         event.preventDefault()
         console.log(PopUpBackground.style.display, PopUpBackground.style.opacity)
 
@@ -84,6 +97,38 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log("clicked out of window")
             FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
             FadeOut(PopUpFrame, fadeOutTime_PopUp)
+        }
+    });
+
+    document.getElementById("SubmitButton").addEventListener("click", (event) => {
+        var TaskName = document.getElementById("TaskName")
+        var TaskDescription = document.getElementById("TaskDescription")
+        var DueDate = document.getElementById("TaskDueDate")
+
+        if (!TaskName.value || !TaskDescription.value || !DueDate.value) {
+            if (!TaskName.value) {
+                ApplyShakeAnimation(TaskName, "ShakeLeftRight", 0.35)
+            }
+            if (!TaskDescription.value) {
+                ApplyShakeAnimation(TaskDescription, "ShakeLeftRight", 0.35)
+            }
+            if (!DueDate.value) {
+                ApplyShakeAnimation(DueDate, "ShakeLeftRight", 0.35)
+            }
+        } else {
+            console.log(TaskName)
+            console.log(TaskDescription)
+            console.log(DueDate)
+    
+            event.preventDefault()
+            console.log("clicked close button")
+            FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
+            FadeOut(PopUpFrame, fadeOutTime_PopUp)
+            setTimeout(() => {
+                TaskName.value = ""
+                TaskDescription.value = ""
+                DueDate.value = ""
+            }, 3000 * fadeOutTime_PopUp);
         }
     });
 })
