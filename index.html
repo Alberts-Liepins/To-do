@@ -15,33 +15,34 @@
             <h1 class="TextNormal TextShadowBig" style="color: #ffffff; font-size:xx-large">Uzdevumu saraksts</h1>
         </div>
         <div class="center">
-            <input id="CreateNewTask" class="button TextNormal NoOutline" type="button" value="Pierakstīt uzdevumu">
+            <input id="CreateNewTask" class="NewTaskButton TextNormal NoOutline ButtonStyle" type="button" value="Pierakstīt uzdevumu">
         </div>
     </div>
     <svg class="WaveStyle" viewBox="0 0 500 260" style="z-index: 2">
-        <path d="M0,110 C245,130 270,85 500,110 L500,250 L0,250 X"/>
+        <path d="M0,110 C245,130 270,85 500,110 L500,250 L0,250 Z"/>
     </svg>
     <div id="PopUpFrame">
         <span>
             <h2 id="PopUpHeaderText" class="TextShadowBig">Jauns uzdevums!</h2 >
-            <input id="PopUpCloseButton" class="TextNormal NoOutline" type="button" value="Aizvērt">
+            <input id="PopUpCloseButton" class="TextNormal NoOutline ButtonStyle" type="button" value="Aizvērt">
         </span>
         <div id="PopUpFormFrame">
             <form id="PopUpForm">
                 <label class="TextNormal TextShadowBig" for="TaskName" maxlength="10">Dodiet uzdevumam nosaukumu!</label><br>
                 <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!" spellcheck="false"><br>
 
-                <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="100">Rakstiet īsu aprakstu par uzdevumu!</label><br>
+                <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="300">Rakstiet īsu aprakstu par uzdevumu!</label><br>
                 <textarea class="TextInput" type="textarea" id="TaskDescription" name="TaskDescription" placeholder="Aprakstiet jūsu uzdevumu!" wrap="hard" maxlength="204" spellcheck="false"></textarea><br>
                 
-                <label class="TextNormal TextShadowBig" for="TaskDueDate">Līdz kuram datumam jāpabeidz uzdevums?</label><br>
-                <input type="date" id="TaskDueDate" name="TaskDueDate" min="2021-04-23" max="2500-04-30" spellcheck="false"><br>
+                <label class="TextNormal TextShadowBig" for="TaskDueDate">Līdz kuram datumam un laikam jāpabeidz uzdevums?</label><br>
+                <input type="date" id="TaskDueDate" name="TaskDueDate" min="2021-04-23" max="2500-04-30" spellcheck="false">
+                <input type="time" id="TaskDueTime" name="TaskDueTime" spellcheck="false">
             </form>
         </div>
-        <input id="SubmitButton" class="TextNormal NoOutline center TextShadowBig" type="button" value="Iesniegt">
+        <input id="SubmitButton" class="TextNormal NoOutline center TextShadowBig ButtonStyle" type="button" value="Iesniegt">
 
         <svg id="SmallWave" viewBox="0 0 500 260">
-            <path d = "M0,90 C245,60 290,118 500,80 L500,250 L0,250 X"/>
+            <path d = "M0,90 C245,60 290,118 500,80 L500,250 L0,250 Z"/>
             <!--
                 Man iepriekš SVG koordinātu sistēma bija nesaprotama, bet taisot šo majaslapu es palasiju par SVG koordinātēm un +- sapratu kā tās strādā.
                 Sapratu pietiekoši lai uzzimētu parastu vilni.
@@ -60,9 +61,20 @@
         </svg>
     </div>
     <div id="PopUpBackground"></div>
-    <div id="TasksFrame" class="NoOutline">
-        <div id="TaskPreset">
-            hello
+    <div id="CardTasksFrame" class="NoOutline">
+        <div id="CardTaskPreset">
+            <p id="CardTaskHeader" class="TextNormal TextShadowBig" >PLACEHOLDER TASK NAME</p>
+            <div id="CardTaskDescription">
+                <div id="CardFadeinDescription"></div>
+                <p id="CardTaskDescriptionText" class="TextNormal TextShadowBig">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum nesciunt fugit facere, voluptas deleniti ipsa, iste consequatur tempore repellat, architecto nemo magni. Architecto eos, sit cum necessitatibus incidunt eum provident. amet consectetur adipisicing elit. Sit cum consequatur incidunt eum.</p>
+                <div id="CardFadeOutDescription"></div>
+            </div>
+            <div>
+                <div class="TextNormal TextShadowSmall" id="CardDueText">Pabeigt līdz:</div>
+                <div class="TextBold" id="CardDueDate">33/12/2999</div>
+                <div class="TextBold" id="CardDueTime">23:59</div>
+            </div>
+            <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ButtonStyle" type="button" value="Pabeigts!">
         </div>
     </div>
 </body>

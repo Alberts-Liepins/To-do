@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', function(){ 
-    var animationSteps = 40  // pilnīgi patvaļīgi izvēlēts skaitlis. Nosaka cik soļi ir animācijās.
+    const animationSteps = 13 // pilnīgi patvaļīgi izvēlēts skaitlis. Nosaka cik soļi ir animācijās.
 
-    var fadeInTime_Background = 0.2
-    var fadeOutTime_Background = 0.2
+    const fadeInTime_Background = 0.2
+    const fadeOutTime_Background = 0.2
 
-    var fadeInTime_PopUp = 0.05
-    var fadeOutTime_PopUp = 0.05
+    const fadeInTime_PopUp = 0.05
+    const fadeOutTime_PopUp = 0.05
 
-    var blurRadius = 2.5
+    const blurRadius = 2.5
+
+    var TaskName = document.getElementById("TaskName")
+    var TaskDescription = document.getElementById("TaskDescription")
+    var DueDate = document.getElementById("TaskDueDate")
+    var DueTime = document.getElementById("TaskDueTime")
 
     function FadeIn(element, fadeTime, blurBoolean, radius) {
         element.style.display = "block";
@@ -70,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var PopUpFrame = document.getElementById("PopUpFrame")
 
     document.getElementById("CreateNewTask").addEventListener("click", (event) => {
-        event.preventDefault()
         console.log("creating new task")
         FadeIn(PopUpBackground, fadeInTime_Background, true, blurRadius)
         FadeIn(PopUpFrame, fadeInTime_PopUp)
@@ -78,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     document.getElementById("PopUpCloseButton").addEventListener("click", (event) => {
-        event.preventDefault()
         console.log("clicked close button")
         FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
         FadeOut(PopUpFrame, fadeOutTime_PopUp)
@@ -90,9 +93,6 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     window.addEventListener("click", (event) => {
-        event.preventDefault()
-        console.log(PopUpBackground.style.display, PopUpBackground.style.opacity)
-
         if (event.target == PopUpBackground && PopUpBackground.style.display == "block"){
             console.log("clicked out of window")
             FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
@@ -101,11 +101,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     document.getElementById("SubmitButton").addEventListener("click", (event) => {
-        var TaskName = document.getElementById("TaskName")
-        var TaskDescription = document.getElementById("TaskDescription")
-        var DueDate = document.getElementById("TaskDueDate")
-
-        if (!TaskName.value || !TaskDescription.value || !DueDate.value) {
+        if (!TaskName.value || !TaskDescription.value || !DueDate.value || !DueTime) {
             if (!TaskName.value) {
                 ApplyShakeAnimation(TaskName, "ShakeLeftRight", 0.35)
             }
@@ -115,10 +111,13 @@ document.addEventListener('DOMContentLoaded', function(){
             if (!DueDate.value) {
                 ApplyShakeAnimation(DueDate, "ShakeLeftRight", 0.35)
             }
+            if (!DueTime.value) {
+                ApplyShakeAnimation(DueTime, "ShakeLeftRight", 0.35)
+            }
         } else {
-            console.log(TaskName)
-            console.log(TaskDescription)
-            console.log(DueDate)
+            console.log(TaskName.value)
+            console.log(TaskDescription.value)
+            console.log(DueDate.value)
     
             event.preventDefault()
             console.log("clicked close button")
@@ -128,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 TaskName.value = ""
                 TaskDescription.value = ""
                 DueDate.value = ""
+                
             }, 3000 * fadeOutTime_PopUp);
         }
     });
