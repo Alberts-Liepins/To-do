@@ -98,9 +98,8 @@ document.addEventListener('DOMContentLoaded', function(){
         }, 3000 * fadeOutTime_PopUp);
     });
 
-    window.addEventListener("click", (event) => {
-        if (event.target == PopUpBackground && PopUpBackground.style.display == "block"){
-            console.log("clicked out of window")
+    PopUpBackground.addEventListener("click", (event) => {
+        if (PopUpBackground.style.display == "block"){
             FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
             FadeOut(PopUpFrame, fadeOutTime_PopUp)
         }
@@ -140,6 +139,19 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
+    function AddOnclickRemove() {
+        var CardTasks = CardTasksFrame.getElementsByClassName("CardTask")
+
+        for (let i = 0; i < CardTasks.length; i++) {
+            CardTasks[i].getElementsByTagName(`input`)[0].onclick = function() {
+                console.log(`${i}`)
+    
+                ToDoList.splice(i, 1)
+                RenderCard()
+            }
+        }
+    }
+
     function RenderCard() {
         var CardTasksFrame = document.getElementById("CardTasksFrame")
         CardTasksFrame.innerHTML = ""
@@ -148,25 +160,26 @@ document.addEventListener('DOMContentLoaded', function(){
     
         for (let i = 0; i < ToDoList.length; i++) {
             let card = `
-            <div id="CardTaskPreset">
-                <p id="CardTaskHeader" class="TextNormal TextShadowBig" >${ToDoList[i].Nosaukums}</p>
-                <div id="CardTaskDescription">
-                    <div id="CardFadeinDescription"></div>
-                    <p id="CardTaskDescriptionText" class="TextNormal TextShadowBig">${ToDoList[i].Apraksts}</p>
-                    <div id="CardFadeOutDescription"></div>
+            <div class="CardTask">
+                <div id="CardTaskPreset">
+                    <p id="CardTaskHeader" class="TextNormal TextShadowBig" >${ToDoList[i].Nosaukums}</p>
+                    <div id="CardTaskDescription">
+                        <div id="CardFadeinDescription"></div>
+                        <p id="CardTaskDescriptionText" class="TextNormal TextShadowBig">${ToDoList[i].Apraksts}</p>
+                        <div id="CardFadeOutDescription"></div>
+                    </div>
+                    <div>
+                        <div id="CardDueText" class="TextNormal TextShadowSmall">Pabeigt līdz:</div>
+                        <div id="CardDueDate" class="TextBold">${ToDoList[i].TermiņaDiena}</div>
+                        <div id="CardDueTime" class="TextBold">${ToDoList[i].TermiņaLaiks}</div>
+                    </div>
+                    <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ${i}" type="button" value="Pabeigts!${i}">
                 </div>
-                <div>
-                    <div id="CardDueText" class="TextNormal TextShadowSmall">Pabeigt līdz:</div>
-                    <div id="CardDueDate" class="TextBold">${ToDoList[i].TermiņaDiena}</div>
-                    <div id="CardDueTime" class="TextBold">${ToDoList[i].TermiņaLaiks}</div>
-                </div>
-                <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig" type="button" value="Pabeigts!">
             </div>`
 
             CardTasksFrame.innerHTML += card
-            console.log(CardTasksFrame.InnerHTML)
+            AddOnclickRemove()
         }
-
         localStorage.setItem("ActiveCards", JSON.stringify(ToDoList))
     }
 })
