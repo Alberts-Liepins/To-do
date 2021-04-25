@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     let ToDoList = []
 
+    window.addEventListener("load", () => {
+        ToDoList = JSON.parse(localStorage.getItem("ActiveCards") || "[]")
+        RenderCard()
+    })
+
     function FadeIn(element, fadeTime, blurBoolean, radius) {
         element.style.display = "block";
 
@@ -161,5 +166,7 @@ document.addEventListener('DOMContentLoaded', function(){
             CardTasksFrame.innerHTML += card
             console.log(CardTasksFrame.InnerHTML)
         }
+
+        localStorage.setItem("ActiveCards", JSON.stringify(ToDoList))
     }
 })
