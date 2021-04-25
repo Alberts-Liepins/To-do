@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var DueDate = document.getElementById("TaskDueDate")
     var DueTime = document.getElementById("TaskDueTime")
 
+    let ToDoList = []
+
     function FadeIn(element, fadeTime, blurBoolean, radius) {
         element.style.display = "block";
 
@@ -25,8 +27,6 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         
         var opacityIterationStep = 1 / animationSteps
-
-        console.log(fadeTime / animationSteps)
 
         var start = setInterval(() => {
             element.style.opacity = parseFloat(element.style.opacity) + opacityIterationStep
@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
             TaskName.value = ""
             TaskDescription.value = ""
             DueDate.value = ""
+            DueTime.value = ""
         }, 3000 * fadeOutTime_PopUp);
     });
 
@@ -114,21 +115,51 @@ document.addEventListener('DOMContentLoaded', function(){
             if (!DueTime.value) {
                 ApplyShakeAnimation(DueTime, "ShakeLeftRight", 0.35)
             }
-        } else {
-            console.log(TaskName.value)
-            console.log(TaskDescription.value)
-            console.log(DueDate.value)
-    
-            event.preventDefault()
-            console.log("clicked close button")
+        } else { 
+            let ToDoCard = {Nosaukums: TaskName.value, Apraksts: TaskDescription.value, TermiņaDiena: DueDate.value, TermiņaLaiks: DueTime.value}
+
+            ToDoList.push(ToDoCard)
+            
+
+            console.log(ToDoList)
+
             FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius)
             FadeOut(PopUpFrame, fadeOutTime_PopUp)
             setTimeout(() => {
                 TaskName.value = ""
                 TaskDescription.value = ""
                 DueDate.value = ""
-                
+                DueTime.value = ""
             }, 3000 * fadeOutTime_PopUp);
+            RenderCard()
         }
     });
+
+    function RenderCard() {
+        var CardTasksFrame = document.getElementById("CardTasksFrame")
+        CardTasksFrame.innerHTML = ""
+
+        console.log(CardTasksFrame.innerHTML)
+    
+        for (let i = 0; i < ToDoList.length; i++) {
+            let card = `
+            <div id="CardTaskPreset">
+                <p id="CardTaskHeader" class="TextNormal TextShadowBig" >${ToDoList[i].Nosaukums}</p>
+                <div id="CardTaskDescription">
+                    <div id="CardFadeinDescription"></div>
+                    <p id="CardTaskDescriptionText" class="TextNormal TextShadowBig">${ToDoList[i].Apraksts}</p>
+                    <div id="CardFadeOutDescription"></div>
+                </div>
+                <div>
+                    <div id="CardDueText" class="TextNormal TextShadowSmall">Pabeigt līdz:</div>
+                    <div id="CardDueDate" class="TextBold">${ToDoList[i].TermiņaDiena}</div>
+                    <div id="CardDueTime" class="TextBold">${ToDoList[i].TermiņaLaiks}</div>
+                </div>
+                <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig" type="button" value="Pabeigts!">
+            </div>`
+
+            CardTasksFrame.innerHTML += card
+            console.log(CardTasksFrame.InnerHTML)
+        }
+    }
 })

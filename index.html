@@ -28,8 +28,8 @@
         </span>
         <div id="PopUpFormFrame">
             <form id="PopUpForm">
-                <label class="TextNormal TextShadowBig" for="TaskName" maxlength="10">Dodiet uzdevumam nosaukumu!</label><br>
-                <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!" spellcheck="false"><br>
+                <label class="TextNormal TextShadowBig" for="TaskName">Dodiet uzdevumam nosaukumu!</label><br>
+                <input class="TextInput " type="text" id="TaskName" name="TaskName" placeholder="Nosauciet jūsu uzdevumu!" spellcheck="false" maxlength="30"><br>
 
                 <label class="TextNormal TextShadowBig" for="TaskDescription" maxlength="300">Rakstiet īsu aprakstu par uzdevumu!</label><br>
                 <textarea class="TextInput" type="textarea" id="TaskDescription" name="TaskDescription" placeholder="Aprakstiet jūsu uzdevumu!" wrap="hard" maxlength="204" spellcheck="false"></textarea><br>
@@ -62,20 +62,24 @@
     </div>
     <div id="PopUpBackground"></div>
     <div id="CardTasksFrame" class="NoOutline">
-        <div id="CardTaskPreset">
-            <p id="CardTaskHeader" class="TextNormal TextShadowBig" >PLACEHOLDER TASK NAME</p>
-            <div id="CardTaskDescription">
-                <div id="CardFadeinDescription"></div>
-                <p id="CardTaskDescriptionText" class="TextNormal TextShadowBig">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum nesciunt fugit facere, voluptas deleniti ipsa, iste consequatur tempore repellat, architecto nemo magni. Architecto eos, sit cum necessitatibus incidunt eum provident. amet consectetur adipisicing elit. Sit cum consequatur incidunt eum.</p>
-                <div id="CardFadeOutDescription"></div>
-            </div>
-            <div>
-                <div class="TextNormal TextShadowSmall" id="CardDueText">Pabeigt līdz:</div>
-                <div class="TextBold" id="CardDueDate">33/12/2999</div>
-                <div class="TextBold" id="CardDueTime">23:59</div>
-            </div>
-            <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ButtonStyle" type="button" value="Pabeigts!">
-        </div>
+        
     </div>
 </body>
 </html>
+
+<!--
+    <div id="CardTaskPreset">
+            <p id="CardTaskHeader" class="TextNormal TextShadowBig" >PLACEHOLDER TASK NAME</p>
+            <div id="CardTaskDescription">
+                <div id="CardFadeinDescription"></div>
+                <p id="CardTaskDescription" class="TextNormal TextShadowBig">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum nesciunt fugit facere, voluptas deleniti ipsa, iste consequatur tempore repellat, architecto nemo magni. Architecto eos, sit cum necessitatibus incidunt eum provident. amet consectetur adipisicing elit. Sit cum consequatur incidunt eum.</p>
+                <div id="CardFadeOutDescription"></div>
+            </div>
+            <div>
+                <div id="CardDueText" class="TextNormal TextShadowSmall">Pabeigt līdz:</div>
+                <div id="CardDueDate" class="TextBold">33/12/2999</div>
+                <div id="CardDueTime" class="TextBold">23:59</div>
+            </div>
+            <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ButtonStyle" type="button" value="Pabeigts!">
+        </div>
+-->
