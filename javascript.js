@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function(){
                         <div id="CardDueDate" class="TextBold">${ToDoList[i].TermiņaDiena}</div>
                         <div id="CardDueTime" class="TextBold">${ToDoList[i].TermiņaLaiks}</div>
                     </div>
-                    <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ${i}" type="button" value="Pabeigts!${i}">
+                    <input id="CompletedButton" class="TextNormal NoOutline TextShadowBig ${i}" type="button" value="Pabeigts!">
                 </div>
             </div>`
 
