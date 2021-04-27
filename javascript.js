@@ -123,13 +123,13 @@ document.addEventListener('DOMContentLoaded', function(){
         RenderCard();
     });
 
-    document.getElementById("CreateNewTask").addEventListener("click", (event) => {
+    document.getElementById("CreateNewTask").addEventListener("click", () => {
         FadeIn(PopUpBackground, fadeInTime_Background, true, blurRadius);
         FadeIn(PopUpFrame, fadeInTime_PopUp);
         PopUpFrame.style.display = "flex";
     });
 
-    document.getElementById("PopUpCloseButton").addEventListener("click", (event) => {
+    document.getElementById("PopUpCloseButton").addEventListener("click", () => {
         FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius);
         FadeOut(PopUpFrame, fadeOutTime_PopUp);
         setTimeout(() => {
@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', function(){
         }, 3000 * fadeOutTime_PopUp);
     });
 
-    PopUpBackground.addEventListener("click", (event) => {
+    PopUpBackground.addEventListener("click", () => {
         if (PopUpBackground.style.display == "block"){
             FadeOut(PopUpBackground, fadeOutTime_Background, true, blurRadius);
             FadeOut(PopUpFrame, fadeOutTime_PopUp);
         };
     });
 
-    document.getElementById("SubmitButton").addEventListener("click", (event) => {
+    document.getElementById("SubmitButton").addEventListener("click", () => {
         if (!TaskName.value || !TaskDescription.value || !DueDate.value || !DueTime) {
             if (!TaskName.value) {
                 ApplyShakeAnimation(TaskName, "ShakeLeftRight", 0.35);
